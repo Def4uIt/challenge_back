@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
@@ -17,9 +19,16 @@ public class User {
 	private Long id;
 	
 	@Column(nullable = false)
+	@NotBlank(message = "{email.not.blank}")
+	@Email(message = "{email.not.valid}")
 	private String email;
 	@Column(nullable = false)
+	@NotBlank (message = "{name.not.blank}")
 	private String name;
+	@Column(nullable = false)
+	@NotBlank (message = "{password.not.blank}")
+	private String password;
+	
 	public Long getId() {
 		return id;
 	}
